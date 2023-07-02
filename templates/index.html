@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}"> -->
+
+  <title>Fruit Image Uploader</title>
+  <style>
+    body {
+       background-image: url("{{ url_for('static', filename='Download free image of Cut natural grapefruits on beige background by Sasi about grapefruit, wallpaper, minimal story wallpaper, nutrition, and wallpaper nutrition 2441402.jpeg') }}");
+      background-size: cover;
+      /* background-color: rgba(255, 0, 0, 0.5); */
+      background-repeat: no-repeat;
+      /* background-position: center center; */
+      text-align: center;
+      /* padding-top: 100px; */
+    }
+
+    #upload-btn {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+
+    #upload-btn:hover {
+      background-color: #45a049;
+    }
+    #logo{
+      width: 20px;
+      height: 20px;
+    }
+    #slideshow{
+      padding-top: 30px;
+      height: 550px;
+      
+    }
+    #title{
+      padding-top: 10px;
+    }
+    #nav{
+      padding: 20px;
+    }
+    #about{
+      /* color: aliceblue; */
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+    #about1{
+      padding-left: 80px;
+      padding-right: 80px;
+      padding-bottom: 30px;
+      /* font-style:italic; */
+    }
+    #predict{
+      padding-top: 20px;
+      padding-bottom: 30px;
+    }
+    #pr{
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+    #pr:hover{
+      background-color: #45a049;
+    }
+    #title{
+      color: aliceblue;
+    }
+    #assessment{
+      padding-left: 750px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="nav" >
+    <div class="container">
+      <a class="navbar-brand" href="#"><img  src="static\slideshow\istockphoto-184276818-612x612.jpg" id="logo"> </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#About">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#guide">Guide</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#predict">Predict</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#predict" id="assessment">Assessment of health of fruits</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="static\slideshow\Clementines.jpeg" class="d-block w-100" alt="Image 1" id="slideshow" >
+      </div>
+      <div class="carousel-item">
+        <img src="static\slideshow\thelordismylightandmysalvation.jpeg" class="d-block w-100" alt="Image 2" id="slideshow">
+      </div>
+      <div class="carousel-item">
+        <img src="static\slideshow\Bananas 101_ How To Pick Bananas (The Right Way!).jpeg" class="d-block w-100" alt="Image 3" id="slideshow">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <div id="About" >
+    <h1 id="about">ABOUT</h1>
+    <h4 id="about1">Detecting rotten fruits has become significant in the agricultural industry.Separating rotten fruit is a necessary
+    process that helps build trust and credibility before sending fresh products to consumers.This work proposed improving
+    the model for predicting the rotten fruit that applied Convolutional Neural Network deep learning technique. The
+    proposed model classifies the fresh fruits and rotten fruits and gives the percentage of health of fruit from the input fruit images.
+    In this work, I have used three types of fruits, such as apple, banana, and oranges.The developed models has been built using the 
+    Convolutional Neural Network architecture with 13,599 images of fresh and rotten fruits for training, validating, and testing.
+</h4>
+  </div>
+  <div id="guide">
+    <h1 id="about">HOW TO USE</h1>
+    <h4 id="about1">The architecture and design of the app has been thought with the objective to appear autonomous and simple to use. it is
+    supposed to lead the user in the right direction with minimal interaction calls . The user needs to upload the image of the fruit and 
+    click on submit and then it predicts the health of the fruit.</h4>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  
+
+  <h1 id="predict" >PREDICT</h1>
+  <form action="/submit" method="post" enctype="multipart/form-data">
+    <input type="file" name="fruitimage" id="image-input" style="display: none;">
+    <label for="image-input" id="upload-btn" name="a" >Upload Image</label>
+    <br><br><br>
+    <button type="submit" id="pr" >PREDICT</button>
+    <br><br><br>
+    <!-- <label for="image-input" id="upload-btn">PREDICT</label> -->
+  </form>
+  {% if prediction %}
+  <!-- <br><br><br> -->
+  <img src="{{img_path}}" height="400px" width="400px">
+  <br><br><br>
+  <h2 id="res">It is <i id="res"> {{prediction[1]}} </i> and it is <i id=res>{{prediction[0]}}</i>% healthy</h2>
+  
+  <br><br><br>
+  {% endif %}
+  
+</body>
+</html>
