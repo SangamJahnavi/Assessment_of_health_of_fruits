@@ -1,4 +1,4 @@
-# I have trained the model and saved the model in jupyter as modelpost.h5 in jupyter and used the trained modelpost.h5 to get the output
+# I have trained the model and saved the model from jupyter as modelpost.h5 in jupyter and used the trained model modelpost.h5 to get the output
 # this code here is just to make you understand how I trained the model
 # the dataset i have used here is Fruits fresh and rotten for classification from kaggle
 import matplotlib.pyplot as plt
