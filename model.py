@@ -1,3 +1,6 @@
+# I have trained the model and saved the model in jupyter as modelpost.h5 in jupyter and used the trained modelpost.h5 to get the output
+# this code here is just to make you understand how I trained the model
+# the dataset i have used here is Fruits fresh and rotten for classification from kaggle
 import matplotlib.pyplot as plt
 import numpy as np
 import PIL
@@ -100,50 +103,42 @@ model.fit(
 # model.save("modelss.h5")
 model.save("modelpost.h5")
 
-# acc = history.history['accuracy']
-# val_acc = history.history['val_accuracy']
+acc = history.history['accuracy']
+val_acc = history.history['val_accuracy']
 
-# loss = history.history['loss']
-# val_loss = history.history['val_loss']
+loss = history.history['loss']
+val_loss = history.history['val_loss']
 
-# epochs_range = range(epochs)
+epochs_range = range(epochs)
 
-# plt.figure(figsize=(16, 6))
-# plt.subplot(1, 2, 1)
-# plt.plot(epochs_range, acc, label='Training accuracy')
-# plt.plot(epochs_range, val_acc, label='Validation accuracy')
-# plt.legend(loc='lower right')
-# plt.title('Training and validation accuracy')
+plt.figure(figsize=(16, 6))
+plt.subplot(1, 2, 1)
+plt.plot(epochs_range, acc, label='Training accuracy')
+plt.plot(epochs_range, val_acc, label='Validation accuracy')
+plt.legend(loc='lower right')
+plt.title('Training and validation accuracy')
 
-# plt.subplot(1, 2, 2)
-# plt.plot(epochs_range, loss, label='Training loss')
-# plt.plot(epochs_range, val_loss, label='Validation loss')
-# plt.legend(loc='upper right')
-# plt.title('Training and validation loss')
-# plt.show()
+plt.subplot(1, 2, 2)
+plt.plot(epochs_range, loss, label='Training loss')
+plt.plot(epochs_range, val_loss, label='Validation loss')
+plt.legend(loc='upper right')
+plt.title('Training and validation loss')
+plt.show()
 
-# image_batch, label_batch = next(iter(train_ds))
-# prediction_batch = model.predict(image_batch)
-# score_batch = tf.nn.softmax(prediction_batch)
-# test_apple_url = images[0].numpy().astype("uint8")
-# img = tf.keras.utils.load_img(test_apple_url, target_size=(img_height, img_width))
-
-
-# solution
-# img_array = tf.keras.utils.img_to_array(images[0].numpy())
-# img_array = tf.expand_dims(img_array, 0)  # create a batch
-
-# predictions_apple = model.predict(img_array)
-# score_apple = tf.nn.softmax(predictions_apple[0])
-# plt.subplot(1, 2, 1)
-# plt.imshow(images[0].numpy().astype('uint'))
-# plt.axis("on")
-# plt.show()
-# if(class_names[np.argmax(score_apple)][:6] == "rotten"):
-#     print("This", class_names[np.argmax(score_apple)][6:], " is {:.2f}".format(
-#         100-(100 * np.max(score_apple))), "% healthy")
+image_batch, label_batch = next(iter(train_ds))
+prediction_batch = model.predict(image_batch)
+score_batch = tf.nn.softmax(prediction_batch)
+test_apple_url = images[0].numpy().astype("uint8")
+img = tf.keras.utils.load_img(test_apple_url, target_size=(img_height, img_width))
 
 
-# else:
-#     print("This", class_names[np.argmax(score_apple)][5:], " is {:.2f}".format(
-#         100 * np.max(score_apple)), "% healthy")
+solution
+img_array = tf.keras.utils.img_to_array(images[0].numpy())
+img_array = tf.expand_dims(img_array, 0)  # create a batch
+
+predictions_apple = model.predict(img_array)
+score_apple = tf.nn.softmax(predictions_apple[0])
+plt.subplot(1, 2, 1)
+plt.imshow(images[0].numpy().astype('uint'))
+plt.axis("on")
+plt.show()
