@@ -151,7 +151,15 @@
 
   <h1 id="predict" >PREDICT</h1>
   <form action="/submit" method="post" enctype="multipart/form-data">
-    <input type="file" name="fruitimage" id="image-input" style="display: none;">
+    <input type="file" name="fruitimage" id="image-input" style="display: none;" onchange="loadFile(event)">
+    <!-- <input type="file" accept="image/*" onchange="loadFile(event)"> -->
+    <p><img id="output" width="200" /></p>
+    <script>
+      var loadFile = function (event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+      };
+    </script>
     <label for="image-input" id="upload-btn" name="a" >Upload Image</label>
     <br><br><br>
     <button type="submit" id="pr" >PREDICT</button>

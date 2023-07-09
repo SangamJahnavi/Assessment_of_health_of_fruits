@@ -1,14 +1,17 @@
 from flask import Flask,render_template,url_for, request, redirect
 import os
+from PIL import Image
+from io import BytesIO
 import numpy as np
 import pickle
 import tensorflow as tf
 import matplotlib.pyplot as plt
-
+from tensorflow import keras
 
 app = Flask(__name__)
 
-modelp = pickle.load(open('model.pkl', 'rb'))
+# modelp = pickle.load(open('model.pkl', 'rb'))
+modelh = keras.models.load_model('modelpost.h5')
 
 def pred_label(test_apple_url):
     class_names = ['freshapples', 'freshbanana', 'freshoranges',
@@ -18,7 +21,8 @@ def pred_label(test_apple_url):
     img_array = tf.keras.utils.img_to_array(img)
     img_array = tf.expand_dims(img_array, 0)  # create a batch
 
-    predictions_apple = modelp.predict(img_array)
+    # predictions_apple = modelp.predict(img_array)
+    predictions_apple = modelh.predict(img_array)
     score_apple = tf.nn.softmax(predictions_apple[0])
 
     if(class_names[np.argmax(score_apple)][:6] == "rotten"):
@@ -48,9 +52,10 @@ def output():
         img.save(img_path)
         p=pred_label(img_path)
         return render_template("index.html",prediction=p,img_path=img_path)
+        
     
 
 
 if __name__ == "__main__":
-    # app.run(debug=True)
-    app.run(host="0.0.0.0",port=5000)
+    app.run(debug=True)
+    # app.run(host="0.0.0.0",port=5000)
