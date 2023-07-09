@@ -11,7 +11,7 @@ from tensorflow.keras import layers
 from tensorflow.keras.models import Sequential
 from sklearn.metrics import classification_report
 import pickle
-dataset_url = "static\dataset"
+dataset_url = "dataset"
 img_height = 100
 img_width = 100
 batch_size = 32
