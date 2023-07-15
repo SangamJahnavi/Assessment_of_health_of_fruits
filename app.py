@@ -14,7 +14,7 @@ from tensorflow import keras
 app = Flask(__name__)
 
 # modelp = pickle.load(open('model.pkl', 'rb'))
-modelh = keras.models.load_model('modelpost.h5')
+modelh = keras.models.load_model('//app//modelpost.h5')
 
 def pred_label(test_apple_url):
     class_names = ['freshapples', 'freshbanana', 'freshoranges',
