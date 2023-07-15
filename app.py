@@ -1,5 +1,8 @@
 from flask import Flask,render_template,url_for, request, redirect
 import os
+
+import base64
+import io
 from PIL import Image
 from io import BytesIO
 import numpy as np
@@ -48,14 +51,30 @@ def home():
 def output():
     if request.method=='POST':
         img=request.files['fruitimage']
-        img_path="static/"+img.filename
-        img.save(img_path)
-        p=pred_label(img_path)
-        return render_template("index.html",prediction=p,img_path=img_path)
+        # img_path="static/"+img.filename
+        # img.save(img_path)
+
+        # img_p=img.filename
+        im = Image.open(img)
+        data = io.BytesIO()
+        im.save(data, "JPEG")
+        encoded_img_data = base64.b64encode(data.getvalue())
+        p=pred_label(data)
+        return render_template("index.html",prediction=p)
+
+        # p=pred_label(img_path)
+        # return render_template("index.html",prediction=p,img_path=img_path)
         
     
 
 
 if __name__ == "__main__":
-    # app.run(debug=True)
-    app.run(host="0.0.0.0",port=5000)
+    app.run(debug=True)
+    # app.run(host="0.0.0.0",port=5000)
+
+
+
+
+
+
+
